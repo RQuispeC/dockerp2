@@ -116,14 +116,12 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
           -D BUILD_TESTS=OFF \
           -D BUILD_PERF_TESTS=OFF \
           .. && \
-    make -j"$(nproc)" install \
+    make -j"$(nproc)" install && \
 
 # =================================
 # tensorflow
 # =================================
-RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
-    PIP_INSTALL="pip --no-cache-dir install --upgrade" && \
-    GIT_CLONE="git clone --depth 10" && \
+
     $PIP_INSTALL \
         tensorflow_gpu \
         && \
@@ -148,6 +146,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
         mxnet-cu80 \
         graphviz \
         && \
+
 
 # =================================
 # keras
